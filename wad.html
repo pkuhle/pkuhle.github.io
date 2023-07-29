@@ -61,7 +61,7 @@
 							</p>
 							
 							<p>
-								<br><br><br>Next, I designed a four-layer PCB interfacing an STM32 microcontroller with three Hall-effect sensors over an I2C bus. The data collected by the sensors was then passed to the robot’s onboard computer via USB 2.0. By doing this, I was able to learn the fundamentals of Altium Designer, schematic design, and PCB layout. I also had to write the firmware for the PCB using STMCubeIDE
+								<br>Next, I designed a four-layer PCB interfacing an STM32 microcontroller with three Hall-effect sensors over an I2C bus. The data collected by the sensors was then passed to the robot’s onboard computer via USB 2.0. By doing this, I was able to learn the fundamentals of Altium Designer, schematic design, and PCB layout. I also had to write the firmware for the PCB using STMCubeIDE
 							</p>
 							<p>
 								Once the PCB was manufactured and delivered, I assembled it and began running tests with it, only to find that the board was not working. After multiple days of debugging, I learned that I had accidentally swapped the I2C SDL and SCA lines. So, I had to cut some traces and do some rewiring to fix the bus. The board was still not fully debugged yet: I was able to get the microcontroller to talk to the sensors, but the computer was not recognizing my PCB as a USB device. A few more days of debugging led us to discover that the STM32 I was using did not have a built-in USB pull-up resistor. It was not pretty, but the PCB finally worked!
