@@ -66,6 +66,22 @@
 							<p>
 								Once the PCB was manufactured and delivered, I assembled it and began running tests with it, only to find that the board was not working. After multiple days of debugging, I learned that I had accidentally swapped the I2C SDL and SCA lines. So, I had to cut some traces and do some rewiring to fix the bus. The board was still not fully debugged yet: I was able to get the microcontroller to talk to the sensors, but the computer was not recognizing my PCB as a USB device. A few more days of debugging led us to discover that the STM32 I was using did not have a built-in USB pull-up resistor. It was not pretty, but the PCB finally worked!
 							</p>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+									<div class="col-4"><span class="image fit"><img src="images/gecko_pcb.jpeg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/assembled_pcb.jpeg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/gecko_completed_pcb.jpeg" alt="" /></span></div>
+								</div>
+							</div>
+							<h4>The Outcome</h4>
+							<p>
+								After collaborating with a mechanical engineer to build the mount for the PCB, I collected magnetic strength data, plotted the data, and proved that we could detect when the robot was losing magnetic adhesion. More optimization needs to be done to figure out an even better location to place the sensors. However, this feature I developed will be rolled out onto every robot in Gecko’s fleet in the future.
+							</p>
+							<div class="box alt">
+								<div class="row aln-center">
+									<div class="col-7"><span class="image fit"><img src="images/mounted_pcb_gecko.jpeg" alt="" /></span></div>
+								</div>
+							</div>
 						</div>
 					</div>
 
