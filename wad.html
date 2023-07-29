@@ -17,23 +17,18 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+				<header id="header">
+					<div class="inner">
 
-							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
-								</a>
+						<!-- Nav -->
+							<nav>
+								<ul>
+									<li><a href="#menu">Menu</a></li>
+								</ul>
+							</nav>
 
-							<!-- Nav -->
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
-
-						</div>
-					</header>
+					</div>
+				</header>
 
 				<!-- Menu -->
 				<nav id="menu">
@@ -52,17 +47,26 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Wheel Adhesion Detection</h1>
-							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
                             <h2>About Gecko</h2>
-                            <p>Gecko Robotics is a startup that engineers robots that perform industrial inspections on critical infrastructure in the energy, paper, and oil/gas industries. Their robots use magnetic wheels to scale the walls of assets such as boilers and tank shells. The robots have a sensor payload that uses ultrasound to measure the thickness of the entire surface area of the asset and determine its structural integrity.</p>
+                            <p>Gecko Robotics is a startup that engineers robots to perform industrial inspections on critical infrastructure in the energy, paper, and oil/gas industries. Their robots use magnetic wheels to scale the walls of assets such as boilers and tank shells. The robots have a sensor payload that uses ultrasound to measure the thickness of the entire surface area of the asset and determine its structural integrity.</p>
                             <h2>My Intern Project</h2>
                             <h4>The Problem</h4>
-                            <p>Sometimes, an worn down assest is patched up using non-magnetic materials. Since we can't always determine in advance where these areas are, there needed to be a way to figure out if the robot was experiencing decreased magnetic adhesion to the asset. My project was to prove that we could use Hall-effect sensors to detect this loss of adhesion in order to make the robots safer to operate.</p>
+                            <p>
+								Sometimes, a worn down asset is patched up using non-magnetic materials. Since we can't always determine in advance where these areas are, there needed to be a way to figure out if the robot was experiencing decreased magnetic adhesion to the asset. My project was to prove that we could use Hall-effect sensors to detect this loss of adhesion in order to make the robots safer to operate.
+							</p>
                             <h4>The Process</h4>
-                            <p>Add process info here</p>
-                            <h4>The Conclusion</h4>
-                            <p>Add conclusion info here</p>
-							</div>
+							
+                            <p><span class="image left"><img src="images/iPhone_gecko.jpeg" alt=""/></span>
+								<br><br>The hardest part of this problem was figuring out where to place the Hall-effect sensors. Magnetic fields are very difficult to model, so I had to collect data to figure out where to put the sensors. I attached an adjustable rig with an iPhone mount to the robot. I subjected the robot to various scenarios while collecting magnetic field strength data in different locations with the iPhone’s built-in magnetometer. I plotted all the data and picked a general region that I thought would be a good location for a sensor. Then, I ran a magnetic field simulation of that region using ANSYS to fine tune my location down to a point in space.
+							</p>
+							
+							<p>
+								<br><br><br>Next, I designed a four-layer PCB interfacing an STM32 microcontroller with three Hall-effect sensors over an I2C bus. The data collected by the sensors was then passed to the robot’s onboard computer via USB 2.0. By doing this, I was able to learn the fundamentals of Altium Designer, schematic design, and PCB layout. I also had to write the firmware for the PCB using STMCubeIDE
+							</p>
+							<p>
+								Once the PCB was manufactured and delivered, I assembled it and began running tests with it, only to find that the board was not working. After multiple days of debugging, I learned that I had accidentally swapped the I2C SDL and SCA lines. So, I had to cut some traces and do some rewiring to fix the bus. The board was still not fully debugged yet: I was able to get the microcontroller to talk to the sensors, but the computer was not recognizing my PCB as a USB device. A few more days of debugging led us to discover that the STM32 I was using did not have a built-in USB pull-up resistor. It was not pretty, but the PCB finally worked!
+							</p>
+						</div>
 					</div>
 
 				<!-- Footer -->
@@ -74,6 +78,8 @@
                             <ul class="icons">
                                 <li><a href="#" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
                                 <li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="tel: 360-550-1002" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+								<li><a href="mailto: pkuhle25@gmail.com" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
                             </ul>
                         </section>
                         <ul class="copyright">
