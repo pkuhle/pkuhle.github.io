@@ -46,7 +46,18 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Wheel Adhesion Detection</h1>
+							<div class="box alt">
+								<div class="row aln-center">
+									<div class="col-8"><span class="image fit">
+										<figure>
+											<img src="images/picklesburgh.jpeg" alt="" />
+											<figcaption class="align-center">Picklesburgh!</figcaption>
+										</figure>
+									</span>
+									</div>
+								</div>
+							</div>
+							<h1>Wheel Adhesion Detection | Gecko Robotics</h1>
                             <h2>About Gecko</h2>
                             <p>Gecko Robotics is a startup that engineers robots to perform industrial inspections on critical infrastructure in the energy, paper, and oil/gas industries. Their robots use magnetic wheels to scale the walls of assets such as boilers and tank shells. The robots have a sensor payload that uses ultrasound to measure the thickness of the entire surface area of the asset and determine its structural integrity.</p>
                             <h2>My Intern Project</h2>
@@ -61,16 +72,16 @@
 							</p>
 							
 							<p>
-								<br>Next, I designed a four-layer PCB interfacing an STM32 microcontroller with three Hall-effect sensors over an I2C bus. The data collected by the sensors was then passed to the robot’s onboard computer via USB 2.0. By doing this, I was able to learn the fundamentals of Altium Designer, schematic design, and PCB layout. I also had to write the firmware for the PCB using STMCubeIDE
+								<br>Next, I designed a four-layer PCB interfacing an STM32 microcontroller with three Hall-effect sensors over an I2C bus. The data collected by the sensors was then passed to the robot’s onboard computer via USB 2.0. By doing this, I was able to learn the fundamentals of Altium Designer, schematic design, and PCB layout. I also had to write the firmware for the PCB using STMCubeIDE.
 							</p>
 							<p>
 								Once the PCB was manufactured and delivered, I assembled it and began running tests with it, only to find that the board was not working. After multiple days of debugging, I learned that I had accidentally swapped the I2C SDL and SCA lines. So, I had to cut some traces and do some rewiring to fix the bus. The board was still not fully debugged yet: I was able to get the microcontroller to talk to the sensors, but the computer was not recognizing my PCB as a USB device. A few more days of debugging led us to discover that the STM32 I was using did not have a built-in USB pull-up resistor. It was not pretty, but the PCB finally worked!
 							</p>
 							<div class="box alt">
 								<div class="row gtr-uniform">
-									<div class="col-4"><span class="image fit"><img src="images/gecko_pcb.jpeg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/assembled_pcb.jpeg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/gecko_completed_pcb.jpeg" alt="" /></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/gecko_pcb.jpeg" alt="" /> <figcaption class="align-center">Unassembled PCB</figcaption></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/assembled_pcb.jpeg" alt="" /><figcaption class="align-center">Assembled (Broken) PCB</figcaption></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/gecko_completed_pcb.jpeg" alt="" /><figcaption class="align-center">Final (Working) PCB</figcaption></span></div>
 								</div>
 							</div>
 							<h4>The Outcome</h4>
@@ -79,7 +90,7 @@
 							</p>
 							<div class="box alt">
 								<div class="row aln-center">
-									<div class="col-7"><span class="image fit"><img src="images/mounted_pcb_gecko.jpeg" alt="" /></span></div>
+									<div class="col-7"><span class="image fit"><img src="images/mounted_pcb_gecko.jpeg" alt="" /><figcaption class="align-center">PCB Mounted on Robot</figcaption></span></div>
 								</div>
 							</div>
 						</div>
