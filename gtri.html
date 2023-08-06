@@ -53,16 +53,31 @@
 								<div class="row aln-center">
 									<div class="col-8"><span class="image fit">
 										<figure>
-											<img src="images/gtri_selfie.jpeg" alt="" />
+											<img src="images/gtri/gtri_lab.jpeg" alt="" />
 											<figcaption class="align-center">Optics Lab Space at GTRI</figcaption>
 										</figure>
 									</span>
 									</div>
 								</div>
 							</div>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+							<h2>My Intern Project</h2>
+                            <h4>Background</h2>
+							<p>I worked in GTRI's electro-optical systems lab (EOSL) in the summer of 2021. At the time, I was interested in pursuing a career in quantum computing hardware, so I figured I should learn more about optics. My project was to replicate a form of digital holography called homodyne scanning holography. The goal was to digitally reconstruct an object after being scanned with an interference pattern. </p>
+                            <h4>The Process</h4>
+                            <p>
+								I completed this internship right after finishing my freshman year, so I still didn’t really know a lot about anything. Needless to say, learning optics fundamentals was very difficult. I started this process by learning about light waves and how they interfere with one another. I began with the “simplest” scenario: deriving the interference pattern produced by two plane waves crossing at a particular angle. I then moved on to deriving the pattern produced by two spherical wavefronts interfering with each other. I verified my derivations by simulating the interference patterns in MATLAB.<br><br>After learning some of the fundamentals, I moved on to my actual project of implementing homodyne scanning holography. What you see when you take a picture with a regular camera is really just a light intensity map. Holography is a form of imaging that records phase, allowing the user to figure out where the light came from. In digital holography, one can take advantage of this and choose what plane to reconstruct the image on.<br><br>The setup (more technically, an interferometer) I built was based around a laser split into two beams using a beamsplitter. I changed the phase of one of the beams and recombined the two beams to form Fresnel zone plates (FZPs), concentric circles that change phase as a function of beam radius. Using a motorized mirror controlled by MATLAB code, I steered the beam over a resolution target and recorded the light that passed through it with a photodetector.
+							</p>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+									<div class="col-4"><span class="image fit"><img src="images/gtri/interferometer.jpeg" alt="" /> <figcaption class="align-center">Interferometer Assembly</figcaption></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/gtri/motor_mirror.jpeg" alt="" /><figcaption class="align-center">Motorized Mirror</figcaption></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/gtri/daq.jpeg" alt="" /><figcaption class="align-center">Resolution Target Setup</figcaption></span></div>
+								</div>
+							</div>
+							<h4>The Outcome</h4>
+							<p>The work I did will be used as the basis for a possible LiDAR system functioning off of holography.
+							</p>
+							
 						</div>
 					</div>
 
