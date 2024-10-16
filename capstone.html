@@ -45,8 +45,8 @@
 
 				<!-- Main -->
 					<div id="main">
-						<h1>EMG Controlled Wheelchair | Senior Capstone</h1>
 						<div class="inner">
+							<h1>EMG Controlled Wheelchair | Senior Capstone</h1>
 							<div class="box alt">
 								<div class="row aln-center">
 									<div class="col-8"><span class="image fit">
@@ -58,6 +58,52 @@
 									</div>
 								</div>
 							</div>
+							<h2>Motivation</h2>
+							<p>
+								It is estimated that between 250,000 and 500,000 individuals suffer from spinal cord injuries globally every year. These injuries often cause loss of function in parts of the body, including the arms and legs. Individuals with tetraplegia, or those with impaired movement in both the upper and lower parts of the body, must rely on caretakers for most aspects of their lives. This includes locomotion, which typically is done via a wheelchair, but most manual wheelchairs require a significant amount of upper body strength to move, making them inaccessible to many tetraplegics specifically. On the other hand, electric wheelchairs can cost thousands of dollars and still may require some upper body function to move, leaving many individuals without options. 
+							</p>
+							<h2>Objective</h2>
+							<p>
+								The goal of this project was to retrofit an inexpensive manual wheelchair with motors and to control it with electromyography (EMG). EMG signals are simply the electrical activity in a muscle in response to stimulation by a nerve. Prior research has shown that tetraplegics can still produce detectable electrical activity when trying to move a muscle even if no visible motion occurs.
+							</p>
+							<h2>Process</h2>
+							<p>
+								I acted as the electrical hardware lead for this project. I oversaw the electronics design as well as system wiring. Shown below is a block diagram of our overall system. 
+							</p>
+							<div class="box alt"></div>
+								<div class="row aln-center">
+									<div class="col-9"><span class="image fit">
+										<figure><img src="images/capstone/emg_system_overview.png" alt="" /><figcaption class="align-center">System Diagram</figcaption>
+										</figure>
+									</span>
+									</div>
+								</div>
+							<p>
+								Most of my work was in the sensor setup and pre-amplifier design. To measure muscle signals, we used adhesive electrodes and stuck them to the skin above the muscle of interest. Raw muscle activity can be characterized by its weak signal strength and high noise. To combat these two things, each muscle group we measured had three electrodes associated with it: two for differential signaling and one for reference. The reference electrode was placed on a part of the body with little electrical activity, such as the elbow. To further improve noise rejection, I had to consider the spectral content generally contained in EMG signals. This happened to be approximately between 20-500 Hz. To make a bandpass filter with these cutoff frequencies, I cascaded two Sallen-Key filters: one high pass with a corner frequency of 20 Hz and one low pass with a corner frequency of 500 Hz. To increase the EMG signal strength, I used an instrumentation amplifier; this particular amplifier configuration has an especially high impedance looking into each of the input terminals. Through testing, I determined the appropriate gain to use for each muscle group measured since some muscles are stronger than others and, therefore, produce stronger EMG signals.
+							</p>
+							<div class="box alt">
+								<div class="row gtr-uniform">
+									<div class="col-4"><span class="image fit"><img src="images/capstone/assembled_preamp.HEIC" alt="" /> <figcaption class="align-center">Assembled Pre-Amp PCB</figcaption></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/capstone/preamp_logo_in_hand.HEIC" alt="" /> <figcaption class="align-center">PCB Bottom With Custom Team Logo</figcaption></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/capstone/wheelchair_electronics.HEIC" alt="" /> <figcaption class="align-center">Wheelchair With Mounted Electronics</figcaption></span></div>
+								</div>
+							</div>
+							<p>
+								The amplified and filtered signals were then fed into an ADC to then be processed by a neural network to decode muscle actions.
+							</p>
+
+							<h2>Outcome</h2>
+							<p>
+								Here is a video of me controlling the wheelchair using only my muscle signals. This was the first time the whole system worked end-to-end!
+							</p>
+							<div class="row aln-center">
+								<video>
+									<source src="images/capstone/working_wheelchair.mp4" type="video/mp4">
+								</video>
+							</div>
+							<p>
+								At the senior capstone expo, our team won $1,500 for having the best interdisciplinary project. 
+							</p>
 						</div>
 					</div>
 
