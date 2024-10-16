@@ -49,25 +49,59 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Wireless E-Stop | Gecko Robotics</h1>
-							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+							<div class="box alt">
+								<div class="row aln-center">
+									<div class="col-8"><span class="image fit">
+										<figure>
+											<img src="images/new_river_gorge_bridge_overlook.jpg" alt="" />
+											<figcaption class="align-center">Intern trip to New River Gorge National Park in West Virginia</figcaption>
+										</figure>
+									</span>
+									</div>
+								</div>
+							</div>
+							<h2>My Intern Project</h2>
+							<h4>The Problem</h4>
+							<p>
+							The people that go out into the field to drive Gecko's robots and collect data are called “operators.” The operators drive the robots using wireless Xbox controllers. However, these controllers drop connection at times, causing the robots to continue driving in their last commanded direction without stopping.When this happens, robots risk driving onto an area of an asset where they could fall off or become stuck and unretrievable. Unfortunately, the only way to stop the robot from moving is to cut the power to the robot, requiring an operator to be by the robot's base station at all times. Tethering an operator to the base station limits inspection quality since they would like to walk around the asset, sometimes physically distant from the base station, in order to get a better view of what they are inspecting. My job this summer was to design a robust, fail-safe, wireless E-stop system that would allow an operator to cut power to the robot without having to be in close proximity to the base station.
+							</p>
+							<h4>The Process</h4>
+							<p>
+								For this project to succeed, I needed to design two PCBs. One board was the handheld module called the “controller.” The second board, called the “endpoint,” was connected to the base station's power module. A button press on the wireless controller would result in the wireless endpoint switching off the power to the robot. Both of these boards were controlled using STM32F3 microcontrollers.
+							</p>
+							<h5>Hardware</h5>
+							<p>
+								For any wireless system, the first thing that needs to be considered is the radio being used. Considering that I had to design both the hardware and firmware for this system and that I only had about 11 weeks to do the project, it was most efficient to select an off-the-shelf radio module. I decided to use a 900 MHz from Digi's Xbee family of radios due to its extensive documentation. I selected the 900 MHz radio over Digi's 2.4 GHz Xbee since lower frequencies tend to have increased range and less attenuation at the expense of throughput. However, since the system operated at a low frequency (i.e. the handshake between the controller and endpoint was infrequent), a carrier frequency of 900 MHz was plenty sufficient.
+							</p>
+							<p>
+								The wireless controller had a significant limiting factor: battery life. The controller I designed was the first power limited device ever created at Gecko. As a part of this project, I had to calculate the approximate power consumption of the wireless controller PCB based on its various components. These calculations proved to be difficult as there were multiple system states that had to be considered. Most notably, I had to take into account the amount of power consumed during the radios transmit (TX) and receive (RX) phases. Additionally, I added component sleep mode optimizations into my calculations to improve my power consumption estimates. I ended up selecting two disposable AA batteries to power the wireless controller. The system was also designed to be capable of being powered by two rechargeable AA batteries, which have a lower nominal series voltage than two series disposable AA batteries.
+							</p>
+							<h5>Firmware</h5>
+							<p>
+								When planning this project, I not only had to plan my project to include hardware bring up time, but also firmware development time. The guiding principle for the firmware design was to make the system inherently safe, meaning that any failure mode of the system should result in the robot's power being switched off; it is unsafe for a robot to be operational without the wireless E-stop working.
+							</p>
+							<p>
+								For this project, I designed a custom communication scheme between the controller and the endpoint, allowing both sides to know the status of the other side at all times. For example, the controller could communicate if it was overheating. I considered overheating a failure mode, meaning the controller could automatically signal for the power to the robot to be switched off. Each packet also contained a Fletcher checksum to ensure corrupted packets were appropriately dealt with. Corrupted packets are a concern in this application since this wireless system would potentially operate in an area with lots of physical barriers that can cause errors such as multipath.
+							</p>
+							<p>
+								The most important and most complex firmware feature I designed was a custom watchdog algorithm. The watchdog was designed to ensure that the controller and endpoint were never out of sync with each other. I went through two iterations of this watchdog. If at any point the controller endpoint were deemed disconnected either by timeout or by failure to satisfy the watchdog, the robot's power was automatically switched off.
+							</p>
+							<h4>The Outcome</h4>
+							<p>
+								For a second summer in a row, my project was successfully completed! The wireless E-stop system I developed could successfully disable the robot from a distance. The system was quite robust as well as I was able to walk all over the office (with lots of walls and other barriers) and maintain near perfect connection. 
+							</p>
+							<h4>Lessons Learned</h4>
+							<p>
+								I felt like most of the things I took away from this second internship at Gecko were more about project execution at a higher level. Looking back, I found myself in a bit of a time crunch largely because I think I spent too much time looking into some nitty gritty details that weren’t totally irrelevant to the project, but definitely were not needed to develop a proof-of-concept. A lot of this diving into nitty gritty details did not drive as many insights as I could have had if I had gotten hardware in my hands faster. For example, I spent a ton of time on battery life estimation. Battery life and low power electronics are a huge rabbit hole, and I didn’t have time to thoroughly validate my hand calculations. For future projects, I want to make sure to zoom out and periodically ask myself “What is important here?” to keep me focused on the task at hand.
+							</p>
+							
+							<h2>Final Presentation</h2>
+							<div class="align-center">
+								<object type="application/pdf" data="images/PK_Final_Presentation.pdf" width="600" height="800"></object>
+							</div>
 						</div>
 					</div>
-					<h2>My Intern Project</h2>
-					<h4>The Problem</h4>
-					<p>
-						The people that go out into the field to drive Gecko's robots and collect data are called “operators.” The operators drive the robots using wireless Xbox controllers. However, these controllers drop connection at times, causing the robots to continue driving in their last commanded direction without stopping.When this happens, robots risk driving onto an area of an asset where they could fall off or become stuck and unretrievable. Unfortunately, the only way to stop the robot from moving is to cut the power to the robot, requiring an operator to be by the robot’s base station at all times. Tethering an operator to the base station limits inspection quality since they would like to walk around the asset, sometimes physically distant from the base station, in order to get a better view of what they are inspecting. My job this summer was to design a robust, fail-safe, wireless E-stop system that would allow an operator to cut power to the robot without having to be in close proximity to the base station.
-					</p>
-					<h4>The Process</h4>
-					<p></p>
-					<h4>The Outcome</h4>
-					<p></p>
-					<h4>Lessons Learned</h4>
-					<p></p>
-
-
+					
 				<!-- Footer -->
                 <footer id="footer">
                     <div class="inner">
