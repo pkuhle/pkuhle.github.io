@@ -75,6 +75,12 @@
 							<p>
 								The wireless controller had a significant limiting factor: battery life. The controller I designed was the first power limited device ever created at Gecko. As a part of this project, I had to calculate the approximate power consumption of the wireless controller PCB based on its various components. These calculations proved to be difficult as there were multiple system states that had to be considered. Most notably, I had to take into account the amount of power consumed during the radios transmit (TX) and receive (RX) phases. Additionally, I added component sleep mode optimizations into my calculations to improve my power consumption estimates. I ended up selecting two disposable AA batteries to power the wireless controller. The system was also designed to be capable of being powered by two rechargeable AA batteries, which have a lower nominal series voltage than two series disposable AA batteries.
 							</p>
+							<div class="box alt"></div>
+								<div class="row aln-center">
+									<div class="col-4"><span class="image fit"><img src="images/gecko_2024/controller_pcba.jpeg" alt="" /> <figcaption class="align-center">Wireless Controller PCB</figcaption></span></div>
+									<div class="col-4"><span class="image fit"><img src="images/gecko_2024/endpoint pcba.jpeg" alt="" /> <figcaption class="align-center">Wireless Endpoint PCB</figcaption></span></div>
+								</div>
+							</div>
 							<h5>Firmware</h5>
 							<p>
 								When planning this project, I not only had to plan my project to include hardware bring up time, but also firmware development time. The guiding principle for the firmware design was to make the system inherently safe, meaning that any failure mode of the system should result in the robot's power being switched off; it is unsafe for a robot to be operational without the wireless E-stop working.
