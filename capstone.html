@@ -70,7 +70,7 @@
 							<p>
 								I acted as the electrical hardware lead for this project. I oversaw the electronics design as well as system wiring. Shown below is a block diagram of our overall system. 
 							</p>
-							<div class="box alt"></div>
+							<div class="box alt">
 								<div class="row aln-center">
 									<div class="col-9"><span class="image fit">
 										<figure><img src="images/capstone/emg_system_overview.png" alt="" /><figcaption class="align-center">System Diagram</figcaption>
@@ -78,6 +78,7 @@
 									</span>
 									</div>
 								</div>
+							</div>
 							<p>
 								Most of my work was in the sensor setup and pre-amplifier design. To measure muscle signals, we used adhesive electrodes and stuck them to the skin above the muscle of interest. Raw muscle activity can be characterized by its weak signal strength and high noise. To combat these two things, each muscle group we measured had three electrodes associated with it: two for differential signaling and one for reference. The reference electrode was placed on a part of the body with little electrical activity, such as the elbow. To further improve noise rejection, I had to consider the spectral content generally contained in EMG signals. This happened to be approximately between 20-500 Hz. To make a bandpass filter with these cutoff frequencies, I cascaded two Sallen-Key filters: one high pass with a corner frequency of 20 Hz and one low pass with a corner frequency of 500 Hz. To increase the EMG signal strength, I used an instrumentation amplifier; this particular amplifier configuration has an especially high impedance looking into each of the input terminals. Through testing, I determined the appropriate gain to use for each muscle group measured since some muscles are stronger than others and, therefore, produce stronger EMG signals.
 							</p>
@@ -97,13 +98,25 @@
 								Here is a video of me controlling the wheelchair using only my muscle signals. This was the first time the whole system worked end-to-end!
 							</p>
 							<div class="row aln-center">
-								<video>
+								<video width height controls autoplay loop>
 									<source src="images/capstone/working_wheelchair.mp4" type="video/mp4">
 								</video>
 							</div>
+							<br>
 							<p>
 								At the senior capstone expo, our team won $1,500 for having the best interdisciplinary project. 
 							</p>
+							<div class="box alt"></div>
+								<div class="row aln-center">
+									<div class="col-8"><span class="image fit">
+										<figure>
+											<img src="images/capstone/capstone_win.HEIC" alt="" />
+											<figcaption class="align-center">Capstone Winners!</figcaption>
+										</figure>
+									</span>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
