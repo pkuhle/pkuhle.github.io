@@ -75,7 +75,7 @@
 							<p>
 								The wireless controller had a significant limiting factor: battery life. The controller I designed was the first power limited device ever created at Gecko. As a part of this project, I had to calculate the approximate power consumption of the wireless controller PCB based on its various components. These calculations proved to be difficult as there were multiple system states that had to be considered. Most notably, I had to take into account the amount of power consumed during the radios transmit (TX) and receive (RX) phases. Additionally, I added component sleep mode optimizations into my calculations to improve my power consumption estimates. I ended up selecting two disposable AA batteries to power the wireless controller. The system was also designed to be capable of being powered by two rechargeable AA batteries, which have a lower nominal series voltage than two series disposable AA batteries.
 							</p>
-							<div class="box alt"></div>
+							<div class="box alt">
 								<div class="row aln-center">
 									<div class="col-4"><span class="image fit"><img src="images/gecko_2024/controller_pcba.jpeg" alt="" /> <figcaption class="align-center">Wireless Controller PCB</figcaption></span></div>
 									<div class="col-4"><span class="image fit"><img src="images/gecko_2024/endpoint pcba.jpeg" alt="" /> <figcaption class="align-center">Wireless Endpoint PCB</figcaption></span></div>
@@ -89,15 +89,22 @@
 								For this project, I designed a custom communication scheme between the controller and the endpoint, allowing both sides to know the status of the other side at all times. For example, the controller could communicate if it was overheating. I considered overheating a failure mode, meaning the controller could automatically signal for the power to the robot to be switched off. Each packet also contained a Fletcher checksum to ensure corrupted packets were appropriately dealt with. Corrupted packets are a concern in this application since this wireless system would potentially operate in an area with lots of physical barriers that can cause errors such as multipath.
 							</p>
 							<p>
-								The most important and most complex firmware feature I designed was a custom watchdog algorithm. The watchdog was designed to ensure that the controller and endpoint were never out of sync with each other. I went through two iterations of this watchdog. If at any point the controller endpoint were deemed disconnected either by timeout or by failure to satisfy the watchdog, the robot's power was automatically switched off.
+								The most important and most complex firmware feature I designed was a custom watchdog algorithm. The watchdog was designed to ensure that the controller and endpoint were never out of sync with each other. I went through two iterations of this watchdog. If at any point the controller endpoint were deemed disconnected either by timeout or by failure to satisfy the watchdog, the robot's power was automatically switched off. Refer to the firmware slides in the presentation attached at the bottom for more details about how my watchdog algorithm worked.
 							</p>
+							<div class="box alt">
+								<div class="row aln-center">
+									<div class="col-8"><span class="image fit"><img src="images/gecko_2024/broken_watchdog.png" alt="" /> <figcaption class="align-center">First Iteration of Watchdog</figcaption></span></div>
+									<div class="col-8"><span class="image fit"><img src="images/gecko_2024/working_watchdog_case1.png" alt="" /> <figcaption class="align-center">Final Iteration of Watchdog (Case 1)</figcaption></span></div>
+									<div class="col-8"><span class="image fit"><img src="images/gecko_2024/working_watchdog_case2.png" alt="" /> <figcaption class="align-center">Final Iteration of Watchdog (Case 2)</figcaption></span></div>
+								</div>
+							</div>
 							<h4>The Outcome</h4>
 							<p>
 								For a second summer in a row, my project was successfully completed! The wireless E-stop system I developed could successfully disable the robot from a distance. The system was quite robust as well as I was able to walk all over the office (with lots of walls and other barriers) and maintain near perfect connection. 
 							</p>
 							<h4>Lessons Learned</h4>
 							<p>
-								I felt like most of the things I took away from this second internship at Gecko were more about project execution at a higher level. Looking back, I found myself in a bit of a time crunch largely because I think I spent too much time looking into some nitty gritty details that weren’t totally irrelevant to the project, but definitely were not needed to develop a proof-of-concept. A lot of this diving into nitty gritty details did not drive as many insights as I could have had if I had gotten hardware in my hands faster. For example, I spent a ton of time on battery life estimation. Battery life and low power electronics are a huge rabbit hole, and I didn’t have time to thoroughly validate my hand calculations. For future projects, I want to make sure to zoom out and periodically ask myself “What is important here?” to keep me focused on the task at hand.
+								I felt like most of the things I took away from this second internship at Gecko were more about project execution at a higher level. Looking back, I found myself in a bit of a time crunch largely because I think I spent too much time looking into some nitty gritty details that weren't totally irrelevant to the project, but definitely were not needed to develop a proof-of-concept. A lot of this diving into nitty gritty details did not drive as many insights as I could have had if I had gotten hardware in my hands faster. For example, I spent a ton of time on battery life estimation. Battery life and low power electronics are a huge rabbit hole, and I didn’t have time to thoroughly validate my hand calculations. For future projects, I want to make sure to zoom out and periodically ask myself “What is important here?” to keep me focused on the task at hand.
 							</p>
 							
 							<h2>Final Presentation</h2>
